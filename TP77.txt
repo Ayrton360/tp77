@@ -1,0 +1,84 @@
+CREATE DATABASE tp77
+  CHARACTER SET DEFAULT
+  COLLATE DEFAULT;
+
+  CREATE TABLE tiendas (
+  id        int NOT NULL PRIMARY KEY,
+  nombre_comercial   varchar(30),
+  tipo               int,
+  direccion  varchar(30),
+  codigoPostal      int,
+  poblacion          int,
+  latencia           float,
+  longitud           float
+) ENGINE = InnoDB;
+
+	QUERY 1
+
+SELECT 
+  `tiendas`.`id`,
+  `tiendas`.`nombre_comercial`,
+  `tiendas`.`tipo`,
+  `tiendas`.`direccion`,
+  `tiendas`.`codigoPostal`,
+  `tiendas`.`poblacion`,
+  `tiendas`.`latitud`,
+  `tiendas`.`longitud`
+FROM
+  `tiendas`
+WHERE
+  `tiendas`.`direccion` LIKE "%castello"
+
+	QUERY 2
+
+SELECT 
+  `tiendas`.`id`,
+  `tiendas`.`nombre_comercial`,
+  `tiendas`.`tipo`,
+  `tiendas`.`direccionCliente`,
+  `tiendas`.`codigoPostal`,
+  `tiendas`.`poblacion`,
+  `tiendas`.`latitud`,
+  `tiendas`.`longitud`
+FROM
+  `tiendas`
+WHERE
+  `tiendas`.`codigoPostal` = 7600 and `tiendas`.`poblacion` = 1
+
+	QUERY 3
+
+SELECT 
+  `tiendas`.`id`,
+  `tiendas`.`nombre_comercial`,
+  `tiendas`.`tipo`,
+  `tiendas`.`direccion`,
+  `tiendas`.`codigoPostal`,
+  `tiendas`.`poblacion`,
+  `tiendas`.`latitud`,
+  `tiendas`.`longitud`
+FROM
+  `tiendas`
+WHERE
+  `tiendas`.`tipo` = 1
+
+	QUERY 4
+
+SELECT MAX(`tiendas`.`latitud`) AS maxlatitud FROM `tiendas`;
+
+	QUERY 5
+
+SELECT MIN(`tiendas`.`longitud`) AS minlongitud FROM `tiendas`;
+
+	QUERY 6
+
+UPDATE `tiendas`
+  SET   `tiendas`.`nombre_comercial` ='Ochoa'
+  WHERE  `tiendas`.`id` ='8';
+
+UPDATE `tiendas`
+  SET   `tiendas`.`latitud` ='-38.00001'
+  WHERE  `tiendas`.`nombre_comercial` ='wallace';
+
+UPDATE `tiendas`
+  SET   `tiendas`.`nombre_comercial` ='EEM 22'
+  WHERE  `tiendas`.`id` ='9';
